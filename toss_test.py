@@ -3,6 +3,7 @@
 def solution(data):
     data_list=list(data.lower())
     new_list=[]
+    toss_list=[]
     dict1={}
     key_list=[]
     for x in data_list: 
