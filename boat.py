@@ -12,5 +12,5 @@ def solution(people, limit):
     return answer
 
 people = [70, 50, 80, 50]
-limit = 1000
+limit = 100
 solution(people, limit)
