@@ -15,30 +15,79 @@
 #     answer = len(people)
 #     return answer
 
-def solution(people, limit):
-    p1 = people.sort()
-    p2 = p1.reverse
-    temp =0
-    iter = 0
-    final = []
-    for i, (p, q) in enumerate(zip(p1, p2)):
-        if temp+q>limit or iter==2:
-            final.append(temp)
-            if i == len(people)-1:
-                temp = p
-                final.append(temp)
+# def solution(people, limit):
+#     # people.sort()
+#     temp =0
+#     iter = 0
+#     final = []
+#     for i, p in enumerate(people):
+#         if temp+p>limit or iter==2:
+#             final.append(temp)
+#             if i == len(people)-1:
+#                 temp = p
+#                 final.append(temp)
                 
-            temp = p
-            iter = 1
-        else:
-            temp+=q
-            iter+=1
+#             temp = p
+#             iter = 1
+#         else:
+#             temp+=p
+#             iter+=1
         
-    return len(final)
-        
-            
-        
+#     return len(final)
+# def solution(people, limit):
+#     final = []
+#     cnt=0
+#     p1 = sorted(people)
+#     p2 = sorted(people, reverse=True)
+#     for i in p2:
+#         if cnt >=len(people):
+#             break
+#         if (limit - i) > 0 and (p1[0] + i) <= limit:
+#             final.append(p1[0]+i)
+#             cnt+=2
+#             p1 = p1[1:]
+#         else:
+#             final.append(i)
+#             cnt+=1
 
-people = [70, 50, 80, 50,30, 100, 60, 10, 20, 80]
+    # return final  
+
+# 넘파이 실패   
+# import numpy as np
+
+# def solution(people, limit):
+#     final = []
+#     final= np.array(final)
+#     cnt=0
+#     p1 = np.sort(np.array(people))
+#     p2 = np.sort(np.array(people))[::-1]
+#     for i in p2:
+#         if cnt >=len(people):
+#             break
+#         if (limit - i) > 0 and (p1[0] + i) <= limit:
+#             final = np.append(final, p1[0]+i)
+#             cnt+=2
+#             p1 = p1[1:]
+#         else:
+#             final = np.append(final, i)
+#             cnt+=1
+
+#     return len(final)     
+
+people = [70, 50, 80, 50,30, 100, 60, 10, 20, 80,30]
 limit = 100
 solution(people, limit)
+
+#수도 코드
+"""무조건 큰 애들부터 먼저 제 짝을 찾아 주는 경우를 생각하면 됨 
+    피플 가운데 큰 애들 부터 시작
+    만약에 작은 애들 가운데에 짝이 있으면 
+    파이널 리스트에 합쳐서 어팬드
+    없으면 
+    따로 어팬드  
+    그 작은 애는 삭제해 줘야함 혹은 리스트로 돌려야 함 
+    for i in 큰 애 부터 :
+        리미트 - 큰애 > 0 and 작은애[0]+ 큰애 <리미트:
+        파이널.append(큰애, 작은애)
+        작은애 = 작은애 [1:]     
+    """
