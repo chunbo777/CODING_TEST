@@ -1,6 +1,6 @@
    
-number = "1231234"
-k=3
+number = "4177222222"
+k=4
 
 
 
@@ -31,18 +31,19 @@ k=3
 #     new = [k_list.remove(num) for i, num in enumerate(k_list) if num < k_list[i+1]] 
 #     while new(len) != k:
 #         new = new[:-1]
-            # if i == len(k_list)-1:
-            #     k_list.remove(k_list[-1])
-            #     real_k-=1
-            #     break
-            # elif num < k_list[i+1]:
+#             if i == len(k_list)-1:
+#                 k_list.remove(k_list[-1])
+#                 real_k-=1
+#                 break
+#             elif num < k_list[i+1]:
                 
-            #     real_k-=1
-            #     break
+#                 real_k-=1
+#                 break
             
-    # return "".join(k_list)
+#     return "".join(k_list)
 
-#스택으로 풀이 
+
+# 스택으로 풀이 
 def solution(number, k):
     stack = []
     number =  list(number)
