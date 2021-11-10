@@ -1,3 +1,6 @@
+import time
+start= time.time()
+
 # def solution(people, limit):
 #     iter=1
 #     while iter!=0:
@@ -46,15 +49,30 @@
 #             final.append(p1[0]+i)
 #             cnt+=2
 #             p1 = p1[1:]
-#         else:
+#         else: #무거워서 혼자타기
 #             final.append(i)
 #             cnt+=1
 
-    # return final  
+#     return final  
 
-# 넘파이 실패   
-# import numpy as np
-
+from collections import deque
+def solution(people, limit):
+    final = deque([])
+    cnt = 0
+    p1 = deque(sorted(people))
+    p2 = deque(sorted(people, reverse=True))    
+    for i in p2:
+        if cnt >= len(people):
+            break
+        if (limit - i) > 0 and (p1[0] + i) <= limit:
+            final.append(p1[0]+i)
+            cnt+=2
+            p1.popleft()
+        else: #무거워서 혼자타기
+            final.append(i)
+            cnt+=1
+    return final
+        
 # def solution(people, limit):
 #     final = []
 #     final= np.array(final)
@@ -74,10 +92,15 @@
 
 #     return len(final)     
 
+
 people = [70, 50, 80, 50,30, 100, 60, 10, 20, 80,30]
 limit = 100
-solution(people, limit)
+print(solution(people, limit))
+end = time.time()
 
+print("time : ", end - start)
+
+print("end")
 #수도 코드
 """무조건 큰 애들부터 먼저 제 짝을 찾아 주는 경우를 생각하면 됨 
     피플 가운데 큰 애들 부터 시작
