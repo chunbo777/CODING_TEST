@@ -1,3 +1,5 @@
+import time 
+start = time.time()
 # import numpy as np
 # def solution(n, costs):
 #     npcosts = np.array(costs)
@@ -48,11 +50,14 @@
                 
     #         final.append([st, dp])
     #         cost.append(co)
-n = 5
-# costs = [[0,1,1],[0,2,2],[1,2,5],[1,3,1],[2,3,8]]
-costs = [[2,3,8],[0,2,2],[1,2,5],[1,3,7],[1,3,1],[0,1,1], [0,4,7]]
+# n = 5
+# # costs = [[0,1,1],[0,2,2],[1,2,5],[1,3,1],[2,3,8]]
+# costs = [[2,3,8],[0,2,2],[1,2,5],[1,3,7],[1,3,1],[0,1,1], [0,4,7]]
 # solution(n, costs)
-               
+# n = 5
+# costs = [[0, 1, 1], [3, 1, 1], [0, 2, 2], [0, 3, 2], [0, 4, 100]]         
+n = 5
+costs = [[0,1,1],[0,4,5],[2,4,1],[2,3,1],[3,4,1]] 
 # def mergeSort(a):
 #     if len(a) > 1: 
 #         mid = len(a)//2 
@@ -104,13 +109,26 @@ def solution(n, costs):
 
 
     final = []
+    final_tuple = []
+    st_list = []
+    dp_list = []
     cost = []
+    def find(st, dp, st_list, dp_list):
+        
     for [st, dp, co] in mergeSort(costs):
-        if st not in final or dp not in final:
-            final.extend([st, dp])
-            cost.append(co)
+        # if st not in final or dp not in final:
+        # if st not in final and dp not in final:
+        if st in st_list and dp in dp_list:
+            find(st)
+        st_list.append(st)
+        dp_list.append(dp)
+        final_tuple.append((st, dp))
+        final.extend([st, dp])
+        cost.append(co)
         # if (len(final) == 2*(n-1)) and len(set(final)) == n:
         #    break
     
     return sum(cost)
 solution(n, costs)
+end = time.time()
+print(end-start)

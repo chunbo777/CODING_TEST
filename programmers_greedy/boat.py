@@ -55,24 +55,36 @@ start= time.time()
 
 #     return final  
 
-from collections import deque
-def solution(people, limit):
-    final = deque([])
-    cnt = 0
-    p1 = deque(sorted(people))
-    p2 = deque(sorted(people, reverse=True))    
-    for i in p2:
-        if cnt >= len(people):
-            break
-        if (limit - i) > 0 and (p1[0] + i) <= limit:
-            final.append(p1[0]+i)
-            cnt+=2
-            p1.popleft()
-        else: #무거워서 혼자타기
-            final.append(i)
-            cnt+=1
-    return final
-        
+# from collections import deque
+# def solution(people, limit):
+#     final = deque([])
+#     cnt = 0
+#     p1 = deque(sorted(people))
+#     p2 = deque(sorted(people, reverse=True))    
+#     for i in p2:
+#         if cnt >= len(people):
+#             break
+#         if (limit - i) > 0 and (p1[0] + i) <= limit:
+#             final.append(p1[0]+i)
+#             cnt+=2
+#             p1.popleft()
+#         else: #무거워서 혼자타기
+#             final.append(i)
+#             cnt+=1
+#     return final
+"""모범 답안 """
+def solution(people, limit) :
+    answer = 0
+    people.sort()
+
+    a = 0
+    b = len(people) - 1
+    while a < b :
+        if people[b] + people[a] <= limit :
+            a += 1
+            answer += 1
+        b -= 1
+    return len(people) - answer        
 # def solution(people, limit):
 #     final = []
 #     final= np.array(final)
@@ -114,3 +126,16 @@ print("end")
         파이널.append(큰애, 작은애)
         작은애 = 작은애 [1:]     
     """
+
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
