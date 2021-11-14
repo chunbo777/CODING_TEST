@@ -142,10 +142,10 @@ def solution(numbers):
         #         answer+=num
 
 # numbers =[3, 30, 34, 5, 9, 200, 21]
-numbers =[3, 34300, 30001, 5,5, 9]
+numbers =[3, 34300, 30001, 5,5, 9,0]
 # numbers=[6,10,2]
-# solution(numbers)
+solution(numbers)
 
-num = sorted(numbers, key = lambda x : str(x)[-1], reverse=True)
-num2 = sorted(numbers, key = lambda x : int(x),reverse=True)
-print(num)
+# num = sorted(numbers, key = lambda x : str(x)[-1], reverse=True)
+# num2 = sorted(numbers, key = lambda x : int(x),reverse=True)
+# print(num)

@@ -11,7 +11,7 @@ def solution(citations):
         if que[-1] == num:
             que.pop()
             pop_idx +=1
-            if pop_idx => num:
+            if pop_idx >= num:
                 break
         if que[-1]!=num:
             num = que[-1]
@@ -19,7 +19,7 @@ def solution(citations):
     return num
 
 # citations = [3,0,6,1,5]
-citations = [3,3,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,6,6,6,1,1,1,1,1,5,5,5,5,5]
+citations = [3,3,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,6,6,6,6,1,1,1,1,1,5,5,5,5,5]
 
-solutions(citations)
+solution(citations)
 
