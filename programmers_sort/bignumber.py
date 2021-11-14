@@ -60,14 +60,13 @@
 
 def innersort(a, b, idx = 1 ): # 들어오는 첫째 수와 둘째 수에 대해서
     #(이 둘은 첫째 자리가 동일함)
+     
     if len(str(b)) > len(str(a)):
         if str(a)[idx-1] < str(b)[idx]:
             return True
         if str(a)[idx-1] > str(b)[idx]:
             return False
-        if str(a)[idx-1] == str(b)[idx]:
-            idx+=1
-            return innersort(a, b, idx)
+        
     if len(str(a)) >= len(str(b)):
         if str(b)[idx-1] < str(a)[idx]:
             return False
@@ -143,6 +142,10 @@ def solution(numbers):
         #         answer+=num
 
 # numbers =[3, 30, 34, 5, 9, 200, 21]
-numbers =[3, 30300, 30000, 5,5, 9]
+numbers =[3, 34300, 30001, 5,5, 9]
 # numbers=[6,10,2]
-solution(numbers)
+# solution(numbers)
+
+num = sorted(numbers, key = lambda x : str(x)[-1], reverse=True)
+num2 = sorted(numbers, key = lambda x : int(x),reverse=True)
+print(num)

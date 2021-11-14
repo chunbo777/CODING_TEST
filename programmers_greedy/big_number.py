@@ -47,11 +47,13 @@ k=4
 def solution(number, k):
     stack = []
     number =  list(number)
-    stack.append(number[0])
+    stack.append(number[0]) #첫째 항목을 넣고
     # k_list = list(number)
-    for i in number[1:]:
+    for i in number[1:]: #나머지에 대해서
         while len(stack)>0 and  k > 0 and stack[-1] < i:
+            #만일 스택에 값이 있거나, 더 이상 뺄수 있으며, 스택의 마지막 값이 들어올 값보다 작을 경우에
             stack.pop()
+            #스택의 값을 삭제
             k-=1    
         stack.append(i)
     # k = k - (len(number) - len(stack))
