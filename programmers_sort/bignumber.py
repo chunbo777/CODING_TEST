@@ -1,3 +1,6 @@
+from itertools import permutations
+import numpy as np
+from numpy import random
 # def solution(numbers):
 #     for i in range(1, len(numbers)):
 #         for j in range(i, 0, -1):
@@ -60,21 +63,64 @@
 
 def innersort(a, b, idx = 1 ): # 들어오는 첫째 수와 둘째 수에 대해서
     #(이 둘은 첫째 자리가 동일함)
-     
-    if len(str(b)) > len(str(a)):
-        if str(a)[idx-1] < str(b)[idx]:
-            return True
-        if str(a)[idx-1] > str(b)[idx]:
-            return False
-        
-    if len(str(a)) >= len(str(b)):
-        if str(b)[idx-1] < str(a)[idx]:
-            return False
-        if str(b)[idx-1] > str(a)[idx]:
-            return True
-        if str(a)[idx-1] == str(b)[idx]:
-            idx+=1
-            return innersort(a, b, idx)
+    if int(str(a)+str(b)) < int(str(b)+str(a)):
+        return True
+    else:
+        return False 
+
+
+    # if len(str(b)) > len(str(a)):
+
+    #     if str(a) + str(a)*(len(str(b)) -len(str(a))) == str(b):
+    #         return True
+    #     try: 
+    #         if str(a)[idx] < str(b)[idx]:
+    #             return True
+    #         if str(a)[idx] > str(b)[idx]:
+    #             return False
+    #         else:
+    #             idx+=1
+    #             return innersort(a, b, idx)
+
+    #     except:
+    #         if str(a)[idx-1] < str(b)[idx]:
+    #             return True
+    #         if str(a)[idx-1] > str(b)[idx]:
+    #             return False
+    #         else:
+    #             idx+=1
+    #             return innersort(a, b, idx)
+            
+    # if len(str(a)) > len(str(b)):
+    #     if str(b) + str(b)*(len(str(a)) -len(str(b))) == str(a):
+    #         return False
+    #     try:
+    #         if str(b)[idx] < str(a)[idx]:
+    #             return False
+    #         if str(b)[idx] > str(a)[idx]:
+    #             return True
+    #         else:
+    #             idx+=1
+    #             return innersort(a, b, idx)
+    #     except:
+    #         if str(b)[idx-1] < str(a)[idx]:
+    #             return False
+    #         if str(b)[idx-1] > str(a)[idx]:
+    #             return True
+    #         else:
+    #             idx+=1
+    #             return innersort(a, b, idx)
+    #     # if str(b)[idx-1] == str(a)[idx]:
+    #     #     idx+=1
+    #         return innersort(a, b, idx)
+    # if len(str(a)) == len(str(b)):
+    #     if str(b)[idx] < str(a)[idx]:
+    #         return False
+    #     if str(b)[idx] > str(a)[idx]:
+    #         return True
+    #     if str(a)[idx] == str(b)[idx]:
+    #         idx+=1
+    #         return innersort(a, b, idx)
     # if len(a) == len(b)
 
     # return innersort(a, b, idx )
@@ -90,11 +136,12 @@ def popping(pops):
         pops = []
         stack.append(pop_sort[0])
         for num in pop_sort[1:]:
-            while len(stack) > 0 and str(stack[-1])[0] == str(num)[0] and (innersort(stack[-1], num)==True)  :
+            while len(stack) > 0 and stack[-1]!=num and str(stack[-1])[0] == str(num)[0] and (innersort(stack[-1], num)==True)  :
                 pops.append(stack[-1])
                 stack.pop()
             stack.append(num)
-        stack.extend(popping(pops))
+        if pops != []:
+            stack.extend(popping(pops))
         return stack
 def solution(numbers):
     
@@ -104,7 +151,7 @@ def solution(numbers):
     # 큰자리수 기준으로 정렬
     # idx = 0
     pops = []
-    stack.append(number_sort[0])
+    stack.append(number_sort[0]) #앞자리 수 
     for num in number_sort[1:]:
         while len(stack) > 0 and stack[-1]!=num and str(stack[-1])[0] == str(num)[0] and (innersort(stack[-1], num)==True)  :
             pops.append(stack[-1])
@@ -115,8 +162,39 @@ def solution(numbers):
             pops = []
     return "".join([str(num) for num in stack])
     # final.extend(solution(pops))
+def perm(numbers):
+    n = len(numbers)
+    
+    permute =  list(permutations(numbers, n))
+    final = []
+    for per in permute:
+        answer =""
+        for p in per:
+            answer+=str(p)
+        final.append(answer)
+    try:
+        ans = max(final)
+    except:
+         ans ="1"
+    return ans
 
-
+import numpy as np
+# numbers = [0,0,0,0,0]
+numbers = [387, 969, 624, 750, 62]
+anti = []
+idx = 0
+while idx != 100000: 
+    sol = solution(numbers)
+    # print(sol)
+    # print(perm(numbers))
+    # print(sol == perm(numbers))
+    if (sol == perm(numbers)) == False:
+        print(numbers)
+        anti.append(numbers)
+    idx+=1
+    numbers = list(np.random.choice(10000, 10, replace=True))
+    
+    
 
     # while idx != len(numbers):
        
@@ -142,10 +220,11 @@ def solution(numbers):
         #         answer+=num
 
 # numbers =[3, 30, 34, 5, 9, 200, 21]
-numbers =[3, 34300, 30001, 5,5, 9,0]
+# numbers =[3, 34300, 31001, 5,5, 9,2, 0]
 # numbers=[6,10,2]
 solution(numbers)
 
 # num = sorted(numbers, key = lambda x : str(x)[-1], reverse=True)
 # num2 = sorted(numbers, key = lambda x : int(x),reverse=True)
 # print(num)
+
