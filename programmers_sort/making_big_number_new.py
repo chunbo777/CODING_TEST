@@ -16,7 +16,7 @@ def solution(numbers):
         if i == 0:
             stack.append(numbers[0])
         else: 
-            while len(stack) > 0 and innersort(stack[-1], num):
+            while len(stack) > 0 and stack[-1]!= num and innersort(stack[-1], num):
                 if idx == 0:
                     k_list = deque([])
                 k = stack.pop()
