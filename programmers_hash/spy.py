@@ -5,7 +5,7 @@ def solution(clothes):
     ans = 1
     for value in list(TD.values()):
         ans = ans * (value+1)
-        return ans
+        return ans -1
 
         
 

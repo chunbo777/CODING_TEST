@@ -1,20 +1,3 @@
-"""
-album = {} #플레이수 딕셔너리 저장 
-plays = {}
-for index, genre, play in zip(genres, plays)
-    if album[genre] not none:
-        album[genre] = album[genre] + play
-        plays.append()
-    album[genre] =  play
-# 재생 순서 많은 장르 순으로 정렬
-sorted(album, key = lambda x : )
-#재생 순서 많은 순으로 그 안에 들어가는 함수
-def inner sort:
-
-
-"""
-
-
 
 
 def solution(genres, plays):
@@ -43,9 +26,10 @@ def solution(genres, plays):
                 final.extend(sorted(sorted(list(playing[genre].items()), reverse = True)[1][1])[:1])
             except:
                 pass
+    return final
     # return answer
 
-genres = ["classic", "pop", "classic", "classic", "pop", "pop"]
-plays = [500, 600, 150, 800, 2500, 2500]
+genres = ["classic", "pop", "classic", "classic"]
+plays = [500, 600, 150, 800]
 
 solution(genres, plays)
