@@ -6,26 +6,26 @@
 """
 from collections import deque
 
-def solution(priorities, location):
-    final = deque()
-    temp = deque()
-    pointer = priorities.index(max(priorities)) #시작점
+# def solution(priorities, location):
+#     final = deque()
+#     temp = deque()
+#     pointer = priorities.index(max(priorities)) #시작점
     
-    # while len(final) == len(priorities):
-    while len(temp) != len(priorities): 
-        while len(temp)>0 and temp[-1]<priorities[pointer] :
-            temp.pop()
-        temp.append(priorities[pointer])
-        if pointer >= (len(priorities)-1):        
-            pointer = 0 
-        else:
-            pointer += 1
+#     # while len(final) == len(priorities):
+#     while len(temp) != len(priorities): 
+#         while len(temp)>0 and temp[-1]<priorities[pointer] :
+#             temp.pop()
+#         temp.append(priorities[pointer])
+#         if pointer >= (len(priorities)-1):        
+#             pointer = 0 
+#         else:
+#             pointer += 1
         
 
-    temp.append(priorities[i])  
+#     temp.append(priorities[i])  
         
 
-    return temp
+#     return temp
 
 def solution_max(priorities, location):
     temp2=[]
@@ -42,7 +42,7 @@ def solution_max(priorities, location):
         except:
             break
     final_index = [int(v) for k, v in printfor].index(location)
-    return final_index
+    return final_index + 1
 priorities = [2, 1, 3, 2]
 priorities = [3, 3, 1, 9, 1, 5, 6]
 location = 0

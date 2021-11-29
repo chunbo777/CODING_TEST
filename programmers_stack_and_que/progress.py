@@ -32,6 +32,6 @@ def solution(progresses, speeds):
 progresses =  [80, 99, 70, 90, 50, 90]
 # progresses = np.random
 # speeds = [1, 30, 5]
-speeds = [15, 100, 2, 3, 1, 1]
+speeds = [10, 100, 2, 3, 1, 1]
 #return [1, 3, 2]
 solution(progresses, speeds)
