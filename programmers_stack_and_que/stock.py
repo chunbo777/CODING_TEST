@@ -39,7 +39,8 @@ def solution(prices):
                     stack = prices[i+1:]
                     break
 
-        final.append(len(stack)+1)
+        final.append(len(stack))
+    return final
 
 prices = [1,2,3,2,3]
 solution(prices)

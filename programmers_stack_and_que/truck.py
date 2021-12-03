@@ -36,35 +36,42 @@ from collections import deque
     # return idx + bridge_length
 
 def solution(bridge_length, weight, truck_weights):
-    bridge = deque(maxlen=bridge_length)
+    bridge = deque()
     all = 0
     idx = 0
+    truck_w = 0
     for truck in truck_weights:
         if bridge_length==1:
             bridge.append(truck)
             idx += 1
             
         elif bridge_length>1:
-            while all_(bridge) + truck > weight:
+            
+            while truck_w + truck > weight:
                 bridge.append(0)
-                idx += 1
+                if idx >= (bridge_length-1):
+                    truck_w -= bridge.popleft()
+                idx +=1
             bridge.append(truck)
-            idx += 1
+            truck_w += truck
+            if idx >= (bridge_length-1):
+                truck_w -= bridge.popleft()
+            idx +=1
             
     return idx + bridge_length
 
-def all_(bridge, all = 0):
-    if len(bridge) == 0:
-        all = 0
-    elif len(bridge) == 1:
-        all = bridge[-1]
-    elif len(bridge) > 1:
-        all = sum(list(bridge)[1:])
-    return all 
+# def all_(bridge, all = 0):
+#     if len(bridge) == 0:
+#         all = 0
+#     elif len(bridge) == 1:
+#         all = bridge[-1]
+#     elif len(bridge) > 1:
+#         all = sum(list(bridge)[1:])
+#     return all 
 
 
 
-bridge_length = 2
+bridge_length = 3
 weight = 10
 truck_weights = [7,4,5,6]
 solution(bridge_length, weight, truck_weights)
