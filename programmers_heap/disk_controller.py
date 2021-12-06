@@ -55,18 +55,19 @@ def solution(jobs):
     answer = 0
     idx = 0
     heap = []
-    while len(heap) == 0:
+    while True:
+    
         for job in jobs:
             if start< job[0] <=end:
                 heapq.heappush(heap, (job[1], job[0]))
-        end += 1
-    while True:
-        pops = heapq.heappop(heap)
-        answer += pops[0]
-        start = pops[1]
-        end = pops[0]
-        idx += 1
-
+        if len(heap) > 0:
+            pops = heapq.heappop(heap)
+            start = end
+            end += pops[0]
+            answer += (end-pops[1])#업무의 엔드포인트 - 해당 팝의 요청시간 
+            idx += 1
+        else: 
+            end += 1
 
 
 
