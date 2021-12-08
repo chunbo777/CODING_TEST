@@ -23,10 +23,14 @@ def solution(scoville, K):
             # scoville = list(heap)
             
 
+scoville = [10, 11] 
+
+K = 11
+
 
     
     
 
-scoville = [1,9,2, 10,10,10,10, 12]
-K = 1
+# scoville = [1,9,2, 10,10,10,10, 12]
+# K = 10
 solution(scoville, K)

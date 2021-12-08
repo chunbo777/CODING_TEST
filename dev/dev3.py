@@ -12,7 +12,7 @@ def solution(s):
         stack.append(i)
     
     return comp1(complexit)
-
+#4,0,4,3  4, 4, 7, 8, 7, 11  
 def comp1(complexit):
     comsum = 0
     for c in range(len(complexit)):

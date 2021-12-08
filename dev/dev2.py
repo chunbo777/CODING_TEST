@@ -13,6 +13,7 @@ def solution(n, recipes, orders):
         if len(fireD) != n:
             fire = i % n
             fireD[fire] = int(t)+recipeD[ord]
+        
         else:
             fire = list(fireD.values()).index(min(fireD.values()))
             fireD[fire] = fireD[fire] + recipeD[ord]

@@ -1,8 +1,8 @@
 def solution(brown, yellow):
     for x in range(3, brown+yellow):
        y = (brown + yellow)/ x
-       if (brown + yellow)%x ==0 and (x-2)*(y-2) == yellow:
-           print(int(y), int(x))
+       if (brown + yellow)%x ==0 and (x-2)*(y-2) == yellow and y > x:
+           return int(y), int(x)
 
 
 
