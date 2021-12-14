@@ -15,7 +15,7 @@ def solution(n, m, array):
             return mid
         elif m > sum([i - mid if i > mid else 0 for i in array ]): # 좀 더 잘라야되는 경우
             end = mid -1
-        else: #좀 더 잘라야 되는 경우
+        else: #좀 덜 잘라야 되는 경우
             start = mid + 1
 
 solution(n, m , array)
