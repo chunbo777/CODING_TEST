@@ -84,6 +84,11 @@ def solution(n, vertex):
     for ver in vertex:
         key_list.extend(union(ver, key_list))
     key_list = list(set(key_list))
+    newD ={}
+    for k in key_list:
+        while True
+        newD[k.key] = k.parent.key
+    
     print(key_list)
     # def noding(key, keylist):
     #     if key in keylist:
