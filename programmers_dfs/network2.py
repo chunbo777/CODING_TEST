@@ -37,8 +37,7 @@ def solution(n, computers):
                     visiting[i][v-1] = 1
                 # elif v-1 == i:
                 #     visiting[i][v-1] = 1
-            if idx == len(computers)^2:
-                break
+            if idx = len(computers)z
         return 
     bfsD = defaultdict(list)
     visiting = zero(computers)
