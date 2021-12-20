@@ -78,7 +78,7 @@ def solution(begin, target, words):
 
 begin = "hit"	
 target = "cog"	
-words = ["hot", "dot", "dog", "lot", "log"]
+words = ["hot", "dot", "dog", "lot", "log", "cog"]
 words_visited = [False]*len(words)
 solution(begin, target, words)
            
