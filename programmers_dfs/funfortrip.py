@@ -30,106 +30,107 @@ tickets	return
 ["ICN", "SFO", "ATL", "ICN", "ATL", "SFO"] 순으로 방문할 수도 있지만 ["ICN", "ATL", "ICN", "SFO", "ATL", "SFO"] 가 알파벳 순으로 앞섭니다."""
 
 
-from collections import deque
-def solution(tickets):
-    visited = [False]* len(tickets)
-    stack = deque()
-    results = []
-    res_all = []
-    idx = 0   
- 
-    def bfs_icn(stack, visited, results):
-        nonlocal idx
-        # if idx == 0:
-        for i, [dep, avl] in enumerate(tickets) :
-                if dep == "ICN" and visited[i] == False : 
-                    visited[i] = True
-                    stack.append(tickets[i])
-                    results.append("ICN")
-                    # break
-        if len(stack) == 0: #인천 순회 다 한 경우
-            return False
-        else:
-            return stack
-            # idx += 1
-
-    def bfs(stack, visited, results):
-        if len(stack) == 0:
-            stack = bfs_icn(stack, visited, results)
-            # if stack != False:
-            #     pass #인천 스택을 제공     
-            # else:
-            #     return False
-        # if len(stack) == 0:
-        #     return results
-        while stack:
-            dep, avl =  stack.pop()
-            results.append(avl)
-            if len(results) == len(tickets)+1:
-                res_all.append(results)
-            for i, [d, a] in enumerate(tickets):
-                if avl == d and visited[i]== False :
-                    visited[i] = True
-                    stack.append([d,a])
-                    # return results
-                else:
-                    if avl !=  d:
-                        pass
-                    else: # 행선지가 같지만 이미 visit한 경우
-                        pass
-
-
-    
-    bfs(stack, visited, results)
-        
-    # return res_all
-
 # from collections import deque
 # def solution(tickets):
-#     visited = [False]*len(tickets)
-#     tickets.sort()
+#     visited = [False]* len(tickets)
 #     stack = deque()
-    
-        
 #     results = []
-#     idx =0
-#     # def deadend(stack, visited, d, a, i):
-#     #     stack2 = stack
-#     #     visiting = visited
-#     #     stack2.append([d,a])
-#     #     visiting[i] = True
-#     #     while stack2:
-#     #         bfs(stack2)
-
-
-#     def bfs(stack):
+#     res_all = []
+#     idx = 0   
+ 
+#     def bfs_icn(stack, visited, results):
 #         nonlocal idx
-#         if idx == 0:
-#             stack.pop()
-#             for i, [dep, avl] in enumerate(tickets):
-#                 if dep == "ICN" and avl in [d for d, a in tickets]: #마지막 인천이 아닌 경우에만 
+#         # if idx == 0:
+#         for i, [dep, avl] in enumerate(tickets) :
+#                 if dep == "ICN" and visited[i] == False : 
 #                     visited[i] = True
 #                     stack.append(tickets[i])
 #                     results.append("ICN")
-#                     idx += 1
-                    
-#         dep, avl = stack.pop()
-#         results.append(avl)
-#         for i, [d, a] in enumerate(tickets):
-#             if avl == d and visited[i]== False :
-#                 visited[i] = True
-#                 stack.append([d,a])
-#                 idx+=1
-#                 # bfs(stack)
-#                 # return True
+#                     # break
+#         if len(stack) == 0: #인천 순회 다 한 경우
+#             return False
+#         else:
+#             return stack
+#             # idx += 1
+
+#     def bfs(stack, visited, results):
+#         if len(stack) == 0:
+#             stack = bfs_icn(stack, visited, results)
+#             # if stack != False:
+#             #     pass #인천 스택을 제공     
+#             # else:
+#             #     return False
+#         # if len(stack) == 0:
+#         #     return results
+#         while stack:
+#             dep, avl =  stack.pop()
+#             results.append(avl)
+#             if len(results) == len(tickets)+1:
+#                 res_all.append(results)
+#             for i, [d, a] in enumerate(tickets):
+#                 if avl == d and visited[i]== False :
+#                     visited[i] = True
+#                     stack.append([d,a])
+#                     # return results
+#                 else:
+#                     if avl !=  d:
+#                         pass
+#                     else: # 행선지가 같지만 이미 visit한 경우
+#                         pass
+
+
     
-#         return
-#     stack.append("start")
-#     while stack:
-#         bfs(stack)
+    # bfs(stack, visited, results)
+        
+    # return res_all
+
+from collections import deque
+
+def solution(tickets):
+    visited = [False]*len(tickets)
+    tickets.sort()
+    stack = deque()
+    
+        
+    results = []
+    idx =0
+    # def deadend(stack, visited, d, a, i):
+    #     stack2 = stack
+    #     visiting = visited
+    #     stack2.append([d,a])
+    #     visiting[i] = True
+    #     while stack2:
+    #         bfs(stack2)
+
+
+    def bfs(stack):
+        nonlocal idx
+        if idx == 0:
+            stack.pop()
+            for i, [dep, avl] in enumerate(tickets):
+                if dep == "ICN" and avl in [d for d, a in tickets]: #마지막 인천이 아닌 경우에만 
+                    visited[i] = True
+                    stack.append(tickets[i])
+                    results.append("ICN")
+                    idx += 1
+                    
+        dep, avl = stack.pop()
+        results.append(avl)
+        for i, [d, a] in enumerate(tickets):
+            if avl == d and visited[i]== False :
+                visited[i] = True
+                stack.append([d,a])
+                idx+=1
+                # bfs(stack)
+                # return True
+    
+        return
+    stack.append("start")
+    while stack:
+        bfs(stack)
     
 
-#     return results
+    return results
 
 
 
