@@ -16,10 +16,8 @@ def bfs(tickets):
         [dep, avl] = stack.pop()
         result.append([dep, avl])
         visitedD[(dep,avl)] = True
-        if sum(visited) == 5:
-            visited = [False]*len(tickets)
-            result_final.append(result)
-            break
+        # if all(visited):
+        #     visitedD[stack.pop()]==False
         for i, [dp, av] in enumerate(tickets):
             if visitedD[(dp, av)]==False and avl == dp:
                 stack.append([dp, av])

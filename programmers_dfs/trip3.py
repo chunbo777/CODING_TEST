@@ -1,23 +1,35 @@
 tickets = [["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL","SFO"]]	
 resall = []
-def bfs(dep, avl, tickets, visit =" ", time = 0, visited =[False]*len(tickets)):
+result = tuple()
+def bfs(dep, avl, tickets, time = 0, visited = tuple([False])*len(tickets)):
+    global result
     if time == 0:
-        visit = ""
-        visited[0] =True
+        result_li =list(result) 
+        result_li.extend([dep, avl])
+        result = tuple(result_li)
+        livis = list(visited)
+        livis[1] =True
+        visited = tuple(livis)
+
     for i, [d, a] in enumerate(tickets):
         if avl == d and visited[i]==False:
-            visit+= " " +a
-            visited[i] = True
-            if time == 3:
-                resall.append(visit)
-                visited[i] = False
+            livis = list(visited)
+            livis[i] =True
+            visited = tuple(livis)
+            result_li =list(result) 
+            result_li.append(a)
+            result = tuple(result_li)
+            print("티켓중:", tickets, "현재방문위치는:", i, [d, a])
+            if all(visited):
+                resall.append(result)
+                # visited[i] = False
                 return
-            bfs(d, a, tickets, visit, time+1, visited)
+            bfs(d, a, tickets, time+1, visited)
         else:
             pass
 
 
-bfs("ICN", "SFO", tickets, visit=" ")
+bfs("ICN", "ATL", tickets)
 
 # #가장 멍청한 방법
 # idx = 0

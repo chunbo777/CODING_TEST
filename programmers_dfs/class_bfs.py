@@ -1,5 +1,5 @@
 from queue import Queue
- 
+tickets = [["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL","SFO"]]	
 # Class which represents unweighted, undirected graph
 class Graph():
     def __init__(self, num_node):
@@ -42,8 +42,13 @@ if __name__ == '__main__':
     # the node from which we start a traversal.
     # Note that we number nodes from 0 to (num_node - 1).
     # num_node, num_edge, start_node = map(int, input().split())
-    num_node, num_edge, start_node = 10, 9, 0
-    graph = Graph(num_node)
+    
+    
+    for ticket in tickets:
+        num_node, num_edge, start_node = , 9, 0 
+        graph = Graph(num_node)
+    # num_node, num_edge, start_node = 10, 9, 0 
+    # graph = Graph(num_node)
     # input an edge with two numbers of nodes in each line
     # for _ in range(num_edge):
     for i in range(num_edge):
