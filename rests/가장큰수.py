@@ -82,6 +82,14 @@ def merge_sort(numbers):
         numbers[idx:] =  left_array[left_idx:] if left_idx != len(left_array) else right_array[right_idx:]
 
 
+def solution(numbers):
+    if sum(numbers) > 0 :
+        merge_sort(numbers)
+    else:
+        return "0"
+    return "".join([str(num) for num in numbers])
+
+
 def mergeSort(a):
     if len(a) > 1: # 배열의 길이가 1보다 클 경우 재귀함수 호출 반복
         mid = len(a)//2 # 2로 나눈 몫 (중간 값) 취함
