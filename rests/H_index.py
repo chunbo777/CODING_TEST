@@ -12,27 +12,32 @@
 3
 """
 
-def solution(citations):
-    citations.sort()
-    stack = []
-    max_cit  = citations[-1]
-    while citations:
-        if max_cit == 0:
-            return 0
-        while citations[-1] >=  max_cit:
-            stack.append(citations.pop())
-            if len(stack) >= max_cit:
-                return max_cit
-            if citations == []:
-                break
-        max_cit -= 1
-        if len(stack) >= max_cit:
-                return max_cit
+# def solution(citations):
+#     citations.sort()
+#     stack = []
+#     max_cit  = citations[-1]
+#     while citations:
+#         if max_cit == 0:
+#             return 0
+#         while citations[-1] >=  max_cit:
+#             stack.append(citations.pop())
+#             if len(stack) >= max_cit:
+#                 return max_cit
+#             if citations == []:
+#                 return 0
+        
+#         max_cit -= 1
+#         if len(stack) >= max_cit:
+#                 return max_cit
         
 
+def solution(citations):
+    citations.sort(reverse=True)
+    answer = max(map(min, enumerate(citations, start=1)))
+    return answer
 
 
-citations = [7,7,7]	
+citations = [7,3,2,5,1,5,1,1, 7,7]	
 # citations = [0,2,1]
 solution(citations)
 
